@@ -1,5 +1,11 @@
 //START
-
+function checkJSON(){
+    var a = JSON.parse(localStorage.getItem("top-5-list"))
+    if(a!=null)
+    {return a}
+    else
+    return []
+}
 var objOfElements = {
     divHeadline: document.getElementById("headline"),
     divCatch: document.getElementById("catch"),
@@ -15,7 +21,7 @@ var objRightBoard = {
     ptnl: 10,
     level: 1,
     missedC: 0,
-    myJson: JSON.parse(localStorage.getItem("top-5-list"))
+    myJson: checkJSON()
 }
 var levelAtt = {
     secOfAnim: 2,
