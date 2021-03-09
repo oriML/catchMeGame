@@ -1,11 +1,4 @@
 //START
-function checkJSON(){
-    var a = JSON.parse(localStorage.getItem("top-5-list"))
-    if(a!=null)
-    {return a}
-    else
-    return []
-}
 var objOfElements = {
     divHeadline: document.getElementById("headline"),
     divCatch: document.getElementById("catch"),
@@ -21,7 +14,11 @@ var objRightBoard = {
     ptnl: 10,
     level: 1,
     missedC: 0,
-    myJson: checkJSON()
+    myJson: (()=>{var a = JSON.parse(localStorage.getItem("top-5-list"))
+    if(a!=null)
+    {return a}
+    else
+    return []})()
 }
 var levelAtt = {
     secOfAnim: 2,
@@ -146,12 +143,11 @@ var objFuncs = {
         objRightBoard.ptnl = 10;
         objRightBoard.level = 1;
         objRightBoard.missedC = 0;
-        objOfElements.spanLevel.innerHTML = `1`;
-        objOfElements.spanPtnl.innerHTML = `10`;
-        objOfElements.spanScore.innerHTML = `0`;
-        objOfElements.spanMc.innerHTML=`0`;
-        objOfElements.spanTimer=`60`;
-        objOfElements.spanTimer.innerHTML=`60`;
+        objOfElements.spanLevel.innerText = `1`;
+        objOfElements.spanPtnl.innerText = `10`;
+        objOfElements.spanScore.innerText = `0`;
+        objOfElements.spanMc.innerText=`0`;
+        objOfElements.spanTimer.innerText=`60`;
         objOfElements.divHeadline.addEventListener("mouseover", objFuncs.change);
         objOfElements.divHeadline.addEventListener("click", objFuncs.catchSpinStart);
         objOfElements.divHeadline.addEventListener("click", objFuncs.divCatchGameStart);
